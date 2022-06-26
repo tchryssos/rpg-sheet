@@ -1,8 +1,8 @@
 import { FIELD_NAMES } from '~/constants/form';
 import { useBreakpointsLessThan } from '~/logic/hooks/useBreakpoints';
 
-import { CheckboxInput } from '../../form/CheckboxInput';
-import { NumberInput } from '../../form/NumberInput';
+import { CheckboxInput } from '../../../form/CheckboxInput';
+import { NumberInput } from '../../../form/NumberInput';
 
 export const FortuneFateInputs: React.FC = () => {
   const isLessThanMd = useBreakpointsLessThan('md');

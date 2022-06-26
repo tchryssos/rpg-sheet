@@ -2,9 +2,9 @@ import { GridBox } from '~/components/box/GridBox';
 import { FIELD_NAMES } from '~/constants/form';
 import { useBreakpointsLessThan } from '~/logic/hooks/useBreakpoints';
 
-import { FormSection } from '../../form/FormSection';
-import { TextAreaInput } from '../../form/TextAreaInput';
-import { TextInput } from '../../form/TextInput';
+import { FormSection } from '../../../form/FormSection';
+import { TextAreaInput } from '../../../form/TextAreaInput';
+import { TextInput } from '../../../form/TextInput';
 import { ExpertPathInput } from './ExpertPathInput';
 import { MasterPathInput } from './MasterPathInput';
 import { NovicePathInput } from './NovicePathInput';

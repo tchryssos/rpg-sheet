@@ -1,8 +1,8 @@
 import { FIELD_NAMES } from '~/constants/form';
 import { useBreakpointsLessThan } from '~/logic/hooks/useBreakpoints';
 
-import { FormSection } from '../../form/FormSection';
-import { TextAreaInput } from '../../form/TextAreaInput';
+import { FormSection } from '../../../form/FormSection';
+import { TextAreaInput } from '../../../form/TextAreaInput';
 
 export const DescriptionInputs: React.FC = () => {
   const isLessThanXs = useBreakpointsLessThan('xs');

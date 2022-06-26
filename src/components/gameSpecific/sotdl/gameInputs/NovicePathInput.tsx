@@ -2,14 +2,14 @@ import { useFormContext } from 'react-hook-form';
 
 import { FIELD_NAMES } from '~/constants/form';
 
-import { TextInput } from '../../form/TextInput';
+import { TextInput } from '../../../form/TextInput';
 
-export const ExpertPathInput = () => {
+export const NovicePathInput = () => {
   const { watch } = useFormContext();
   const level: number = watch(FIELD_NAMES.level, 0);
-  const isExpert = level >= 3;
+  const isNovice = level >= 1;
 
   return (
-    <TextInput disabled={!isExpert} name={FIELD_NAMES.paths.expert_path} />
+    <TextInput disabled={!isNovice} name={FIELD_NAMES.paths.novice_path} />
   );
 };

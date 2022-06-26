@@ -1,7 +1,7 @@
 import { FIELD_NAMES } from '~/constants/form';
 
-import { FormSection } from '../../form/FormSection';
-import { NumberInput } from '../../form/NumberInput';
+import { FormSection } from '../../../form/FormSection';
+import { NumberInput } from '../../../form/NumberInput';
 
 export const CurrencyInputs: React.FC = () => (
   <FormSection columns={3} isCollapsable title="Currency">

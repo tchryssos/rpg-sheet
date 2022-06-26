@@ -4,7 +4,7 @@ import { useFormContext } from 'react-hook-form';
 import { FIELD_NAMES } from '~/constants/form';
 import { useBreakpointsLessThan } from '~/logic/hooks/useBreakpoints';
 
-import { NumberInput } from '../../form/NumberInput';
+import { NumberInput } from '../../../form/NumberInput';
 
 export const HealthInputs = () => {
   const { watch, setValue } = useFormContext();

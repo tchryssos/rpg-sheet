@@ -2,7 +2,7 @@ import { useFormContext } from 'react-hook-form';
 
 import { FIELD_NAMES } from '~/constants/form';
 
-import { TextInput } from '../../form/TextInput';
+import { TextInput } from '../../../form/TextInput';
 
 // const otherOption = {
 //   label: '-- Other --',
