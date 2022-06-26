@@ -2,14 +2,14 @@ import { useEffect, useRef, useState } from 'react';
 
 import { GridBox } from '~/components/box/GridBox';
 import { Form as FormComponent } from '~/components/form/Form';
-import { DEFAULT_VALUES } from '~/constants/form';
 import { ATTRIBUTES } from '~/constants/game';
+import { DEFAULT_VALUES } from '~/constants/gameSpecific/sotdl/form';
 import { EditContext } from '~/logic/contexts/editContext';
 import { useBreakpointsLessThan } from '~/logic/hooks/useBreakpoints';
 import { useSetupFormHotkeys } from '~/logic/hooks/useSetupFormHotkeys';
 
 import { LoadingIntermediary } from '../../form/LoadingIntermediary';
-import { FormNav } from './FormNav';
+import { SwnFormNav } from './FormNav';
 
 export const CharacterForm: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -29,7 +29,7 @@ export const CharacterForm: React.FC = () => {
           setIsLoading={setIsLoading}
           setIsMyCharacter={setIsMyCharacter}
         >
-          <FormNav isMyCharacter={isMyCharacter} />
+          <SwnFormNav isMyCharacter={isMyCharacter} />
           {/* <BasicInfoInputs />
           <HistoryInputs />
           <FormSection columns={isLessThanSm ? 2 : 4} title="Attributes">
