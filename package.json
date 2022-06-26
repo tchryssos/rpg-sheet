@@ -15,7 +15,9 @@
     "build-storybook": "build-storybook",
     "test": "jest",
     "lint": "next lint",
-    "lint:prune": "! ts-prune -i src/pages/* | grep -v -e 'used in module' -e src/pages"
+    "lint:prune": "! ts-prune -i src/pages/* | grep -v -e 'used in module' -e src/pages",
+    "migrate:dev": "npx prisma migrate dev",
+    "migrate:prod": "npx prisma migrate deploy"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^1.6.1",

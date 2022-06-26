@@ -2,20 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 
 import { GridBox } from '~/components/box/GridBox';
 import { Form as FormComponent } from '~/components/form/Form';
-import { FormSection } from '~/components/form/FormSection';
-import { ArmorInput } from '~/components/gameSpecific/sotdl/gameInputs/ArmorInput';
-import { AttributeInput } from '~/components/gameSpecific/sotdl/gameInputs/AttributeInput';
-import { CurrencyInputs } from '~/components/gameSpecific/sotdl/gameInputs/CurrencyInputs';
-import { DescriptionInputs } from '~/components/gameSpecific/sotdl/gameInputs/DescriptionInputs';
-import { EquipmentInputs } from '~/components/gameSpecific/sotdl/gameInputs/EquipmentInputs';
-import { EvilInputs } from '~/components/gameSpecific/sotdl/gameInputs/EvilInputs';
-import { FortuneFateInputs } from '~/components/gameSpecific/sotdl/gameInputs/FortuneFateInputs';
-import { GeneralNotesInputs } from '~/components/gameSpecific/sotdl/gameInputs/GeneralNotesInputs';
-import { HealthInputs } from '~/components/gameSpecific/sotdl/gameInputs/HealthInputs';
-import { HistoryInputs } from '~/components/gameSpecific/sotdl/gameInputs/HistoryInputs';
-import { MagicInputs } from '~/components/gameSpecific/sotdl/gameInputs/MagicInputs';
-import { PhysicalTraitsInputs } from '~/components/gameSpecific/sotdl/gameInputs/PhysicalTraitsInputs';
-import { WeaponInput } from '~/components/gameSpecific/sotdl/gameInputs/WeaponInput';
 import { DEFAULT_VALUES } from '~/constants/form';
 import { ATTRIBUTES } from '~/constants/game';
 import { EditContext } from '~/logic/contexts/editContext';
@@ -24,7 +10,6 @@ import { useSetupFormHotkeys } from '~/logic/hooks/useSetupFormHotkeys';
 
 import { LoadingIntermediary } from '../../form/LoadingIntermediary';
 import { FormNav } from './FormNav';
-import { BasicInfoInputs } from './gameInputs/BasicInfoInputs';
 
 export const CharacterForm: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -45,7 +30,7 @@ export const CharacterForm: React.FC = () => {
           setIsMyCharacter={setIsMyCharacter}
         >
           <FormNav isMyCharacter={isMyCharacter} />
-          <BasicInfoInputs />
+          {/* <BasicInfoInputs />
           <HistoryInputs />
           <FormSection columns={isLessThanSm ? 2 : 4} title="Attributes">
             {ATTRIBUTES.map((a) => (
@@ -70,7 +55,7 @@ export const CharacterForm: React.FC = () => {
           <EquipmentInputs />
           <CurrencyInputs />
           <DescriptionInputs />
-          <GeneralNotesInputs />
+          <GeneralNotesInputs /> */}
         </LoadingIntermediary>
       </FormComponent>
     </EditContext.Provider>
