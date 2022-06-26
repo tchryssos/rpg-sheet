@@ -1,4 +1,4 @@
-import { FIELD_NAMES } from '~/constants/form';
+import { FIELD_NAMES } from '~/constants/gameSpecific/sotdl/form';
 
 import { FormSection } from '../../../form/FormSection';
 import { NumberInput } from '../../../form/NumberInput';

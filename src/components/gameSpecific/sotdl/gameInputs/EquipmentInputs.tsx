@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { GridBox } from '~/components/box/GridBox';
 import { DeleteButton } from '~/components/buttons/DeleteButton';
 import { Body } from '~/components/typography/Body';
-import { FIELD_NAMES } from '~/constants/form';
+import { FIELD_NAMES } from '~/constants/gameSpecific/sotdl/form';
 import { EditContext } from '~/logic/contexts/editContext';
 import { useBreakpointsAtLeast } from '~/logic/hooks/useBreakpoints';
 import { SortableAddAnotherChildProps } from '~/typings/form';

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 import { FormSection } from '~/components/form/FormSection';
-import { FIELD_NAMES } from '~/constants/form';
+import { FIELD_NAMES } from '~/constants/gameSpecific/sotdl/form';
 
 import { TextAreaInput } from '../../../form/TextAreaInput';
 

@@ -9,7 +9,7 @@ import { DeleteButton } from '~/components/buttons/DeleteButton';
 import { AddAnotherMultiField } from '~/components/form/AddAnotherMultiField';
 import { SelectInput } from '~/components/form/SelectInput';
 import { TextInput } from '~/components/form/TextInput';
-import { FIELD_NAMES } from '~/constants/form';
+import { FIELD_NAMES } from '~/constants/gameSpecific/sotdl/form';
 import { EditContext } from '~/logic/contexts/editContext';
 import { useBreakpointsLessThan } from '~/logic/hooks/useBreakpoints';
 import { pxToRem } from '~/logic/utils/styles/pxToRem';

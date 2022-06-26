@@ -2,7 +2,7 @@ import { GridBox } from '~/components/box/GridBox';
 import { FormSection } from '~/components/form/FormSection';
 import { NumberInput } from '~/components/form/NumberInput';
 import { TextInput } from '~/components/form/TextInput';
-import { FIELD_NAMES } from '~/constants/form';
+import { FIELD_NAMES } from '~/constants/gameSpecific/sotdl/form';
 import { useBreakpointsLessThan } from '~/logic/hooks/useBreakpoints';
 
 export const BasicInfoInputs: React.FC = () => {

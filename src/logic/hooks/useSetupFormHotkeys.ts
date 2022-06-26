@@ -4,7 +4,6 @@ export const useSetupFormHotkeys = (
   isEditMode: boolean,
   setIsEditMode: (editing: boolean) => void
 ) => {
-  // Edit ref for hotKey handler
   const isEditRef = useRef(isEditMode);
 
   useEffect(() => {

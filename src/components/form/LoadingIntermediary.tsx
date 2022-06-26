@@ -4,7 +4,7 @@ import { useRouter } from 'next/dist/client/router';
 import { useEffect } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import { DEFAULT_VALUES } from '~/constants/form';
+import { DEFAULT_VALUES } from '~/constants/gameSpecific/sotdl/form';
 import {
   createCharacterSheetRoute,
   NEW_CHARACTER_ID,

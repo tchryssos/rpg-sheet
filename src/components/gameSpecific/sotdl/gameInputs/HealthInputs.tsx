@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import { FIELD_NAMES } from '~/constants/form';
+import { FIELD_NAMES } from '~/constants/gameSpecific/sotdl/form';
 import { useBreakpointsLessThan } from '~/logic/hooks/useBreakpoints';
 
 import { NumberInput } from '../../../form/NumberInput';

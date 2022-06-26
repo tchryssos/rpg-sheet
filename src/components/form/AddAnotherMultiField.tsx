@@ -3,7 +3,7 @@ import sortBy from 'lodash.sortby';
 import { useContext, useEffect, useState } from 'react';
 import { useFieldArray, useFormContext } from 'react-hook-form';
 
-import { SotdlFields } from '~/constants/form';
+import { SotdlFields } from '~/constants/gameSpecific/sotdl/form';
 import { EditContext } from '~/logic/contexts/editContext';
 import { MultiFields } from '~/typings/form';
 

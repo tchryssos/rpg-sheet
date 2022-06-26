@@ -16,8 +16,8 @@ import { HistoryInputs } from '~/components/gameSpecific/sotdl/gameInputs/Histor
 import { MagicInputs } from '~/components/gameSpecific/sotdl/gameInputs/MagicInputs';
 import { PhysicalTraitsInputs } from '~/components/gameSpecific/sotdl/gameInputs/PhysicalTraitsInputs';
 import { WeaponInput } from '~/components/gameSpecific/sotdl/gameInputs/WeaponInput';
-import { DEFAULT_VALUES } from '~/constants/form';
 import { ATTRIBUTES } from '~/constants/game';
+import { DEFAULT_VALUES } from '~/constants/gameSpecific/sotdl/form';
 import { EditContext } from '~/logic/contexts/editContext';
 import { useBreakpointsLessThan } from '~/logic/hooks/useBreakpoints';
 import { useSetupFormHotkeys } from '~/logic/hooks/useSetupFormHotkeys';
