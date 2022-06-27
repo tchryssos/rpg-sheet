@@ -11,10 +11,15 @@ import { useSetupFormHotkeys } from '~/logic/hooks/useSetupFormHotkeys';
 import { LoadingIntermediary } from '../../form/LoadingIntermediary';
 import { SwnFormNav } from './FormNav';
 
-export const CharacterForm: React.FC = () => {
-  const [isLoading, setIsLoading] = useState(false);
+interface SwnCharacterFormProps {
+  isMyCharacter: boolean;
+  characterData?: Record<string, unknown>;
+}
+
+export const SwnCharacterForm: React.FC<SwnCharacterFormProps> = ({
+  isMyCharacter,
+}) => {
   const [isEditMode, setIsEditMode] = useState(false);
-  const [isMyCharacter, setIsMyCharacter] = useState(true);
   const isLessThanSm = useBreakpointsLessThan('sm');
   const isLessThanXs = useBreakpointsLessThan('xs');
 
@@ -24,13 +29,8 @@ export const CharacterForm: React.FC = () => {
     <EditContext.Provider value={{ isEditMode, setIsEditMode }}>
       {/* onSubmit handled in FormNav */}
       <FormComponent defaultValues={DEFAULT_VALUES} onSubmit={() => undefined}>
-        <LoadingIntermediary
-          isLoading={isLoading}
-          setIsLoading={setIsLoading}
-          setIsMyCharacter={setIsMyCharacter}
-        >
-          <SwnFormNav isMyCharacter={isMyCharacter} />
-          {/* <BasicInfoInputs />
+        <SwnFormNav isMyCharacter={isMyCharacter} />
+        {/* <BasicInfoInputs />
           <HistoryInputs />
           <FormSection columns={isLessThanSm ? 2 : 4} title="Attributes">
             {ATTRIBUTES.map((a) => (
@@ -56,7 +56,6 @@ export const CharacterForm: React.FC = () => {
           <CurrencyInputs />
           <DescriptionInputs />
           <GeneralNotesInputs /> */}
-        </LoadingIntermediary>
       </FormComponent>
     </EditContext.Provider>
   );

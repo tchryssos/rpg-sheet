@@ -5,10 +5,6 @@ import { useEffect } from 'react';
 import { useFormContext } from 'react-hook-form';
 
 import { DEFAULT_VALUES } from '~/constants/gameSpecific/sotdl/form';
-import {
-  createCharacterSheetRoute,
-  NEW_CHARACTER_ID,
-} from '~/constants/routing';
 import { fetchCharacter } from '~/logic/api/client/fetchCharacter';
 import { decodeCharacterObj } from '~/logic/utils/decodeCharacterObj';
 import { ApiResponse } from '~/typings/api';
@@ -28,40 +24,40 @@ export const LoadingIntermediary: React.FC<ResetIntermediaryProps> = ({
   isLoading,
   children,
   setIsMyCharacter,
-}) => {
-  const {
-    query: { id },
-    push,
-  } = useRouter();
-  const { reset } = useFormContext();
-  const { user } = useUser();
+}) =>
+  // const {
+  //   query: { id },
+  //   push,
+  // } = useRouter();
+  // const { reset } = useFormContext();
+  // const { user } = useUser();
 
-  useEffect(() => {
-    if (id) {
-      if (id === NEW_CHARACTER_ID) {
-        reset(DEFAULT_VALUES);
-      } else {
-        const onLoad = async () => {
-          setIsLoading(true);
-          const resp: ApiResponse<character> = await fetchCharacter(
-            id as string
-          );
-          if (isSuccessfulCharacterResponse(resp)) {
-            setIsMyCharacter(resp.playerId === user?.id);
-            reset(decodeCharacterObj(resp.characterCode));
-          } else {
-            push(createCharacterSheetRoute('new'));
-          }
-          setIsLoading(false);
-        };
+  // useEffect(() => {
+  //   if (id) {
+  //     if (id === NEW_CHARACTER_ID) {
+  //       reset(DEFAULT_VALUES);
+  //     } else {
+  //       const onLoad = async () => {
+  //         setIsLoading(true);
+  //         const resp: ApiResponse<character> = await fetchCharacter(
+  //           id as string
+  //         );
+  //         if (isSuccessfulCharacterResponse(resp)) {
+  //           setIsMyCharacter(resp.playerId === user?.id);
+  //           reset(decodeCharacterObj(resp.characterCode));
+  //         } else {
+  //           push(createCharacterSheetRoute('new'));
+  //         }
+  //         setIsLoading(false);
+  //       };
 
-        onLoad();
-      }
-    }
-  }, [id, reset, setIsLoading, push, user?.id, setIsMyCharacter]);
+  //       onLoad();
+  //     }
+  //   }
+  // }, [id, setIsLoading, push, user?.id, setIsMyCharacter, reset]);
 
-  if (isLoading) {
-    return <LoadingPageSpinner title="Form loading" titleId="form-loading" />;
-  }
-  return <>{children}</>;
-};
+  // if (isLoading) {
+  //   return <LoadingPageSpinner title="Form loading" titleId="form-loading" />;
+  // }
+  <>{children}</>;
+

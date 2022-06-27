@@ -1,5 +1,6 @@
 // START - Form - START
 export const FIELD_NAMES = {
+  rulebook: 'rulebook',
   name: 'name',
   level: 'level',
   ancestry: 'ancestry',
@@ -80,6 +81,7 @@ export type SotdlFields = typeof FIELD_NAMES;
 // it is encouraged to have default values for all fields
 // I have them for most that aren't add-another-multiple fields
 export const DEFAULT_VALUES = {
+  [FIELD_NAMES.rulebook]: 1,
   [FIELD_NAMES.name]: '',
   [FIELD_NAMES.level]: 0,
   [FIELD_NAMES.ancestry]: '',

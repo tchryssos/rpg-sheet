@@ -7,7 +7,7 @@ import { useFormContext } from 'react-hook-form';
 import {
   createCharacterSheetRoute,
   NEW_CHARACTER_ID,
-} from '~/constants/routing';
+} from '~/constants/routing/client';
 import { saveCharacter } from '~/logic/api/client/saveCharacter';
 import { EditContext } from '~/logic/contexts/editContext';
 import { NavContext } from '~/logic/contexts/navContext';
@@ -106,7 +106,7 @@ const SaveButton: React.FC<SaveButtonProps> = ({ playerId }) => {
     if (isSuccessfulCharacterResponse(resp)) {
       setSaveStatus('success');
       if (query.id === NEW_CHARACTER_ID) {
-        push(createCharacterSheetRoute(resp.id));
+        push(createCharacterSheetRoute(resp.id, 'sotdl'));
       }
     } else {
       setSaveStatus('error');
