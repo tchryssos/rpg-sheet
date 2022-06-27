@@ -7,7 +7,7 @@ import { LogoAscii } from '~/components/LogoAscii';
 import { Layout } from '~/components/meta/Layout';
 import { Pane } from '~/components/Pane';
 import { Title } from '~/components/typography/Title';
-import { HOME_ROUTE } from '~/constants/routing';
+import { HOME_ROUTE } from '~/constants/routing/client';
 import { NavContext } from '~/logic/contexts/navContext';
 
 const FourOhFourPane = styled(Pane)(({ theme }) => ({

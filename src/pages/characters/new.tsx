@@ -30,9 +30,11 @@ const NewCharacter: React.FC = () => (
     <FlexBox column gap={16}>
       <Title>Select a Rulebook</Title>
       <Link href={createSotdlCharacterSheetRoute(NEW_CHARACTER_ID)}>
+        {/* TODO: Replace TextButton with cool animated div of demon */}
         <TextButton buttonLike label="Shadow of the Demon Lord" />
       </Link>
       <Link href={createSwnCharacterSheetRoute(NEW_CHARACTER_ID)}>
+        {/* TODO: Replace TextButton with cool animated div of space */}
         <TextButton buttonLike label="Stars Without Number" />
       </Link>
     </FlexBox>
