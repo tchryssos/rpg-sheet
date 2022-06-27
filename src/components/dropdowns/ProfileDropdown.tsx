@@ -2,7 +2,7 @@ import { useUser } from '@auth0/nextjs-auth0';
 import styled from '@emotion/styled';
 import { useMemo } from 'react';
 
-import { createProfileRoute, SETTINGS_ROUTE } from '~/constants/routing';
+import { createProfileRoute, SETTINGS_ROUTE } from '~/constants/routing/client';
 import { User } from '~/typings/user';
 
 import { AuthLink } from '../AuthLink';

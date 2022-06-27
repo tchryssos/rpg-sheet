@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import { HOME_ROUTE } from '~/constants/routing';
+import { HOME_ROUTE } from '~/constants/routing/client';
 import { useBreakpointsLessThan } from '~/logic/hooks/useBreakpoints';
 import { Spacing } from '~/typings/theme';
 
