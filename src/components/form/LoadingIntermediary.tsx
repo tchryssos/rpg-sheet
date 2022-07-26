@@ -4,11 +4,11 @@ import { useRouter } from 'next/dist/client/router';
 import { useEffect } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import { DEFAULT_VALUES } from '~/constants/form';
 import {
   createCharacterSheetRoute,
   NEW_CHARACTER_ID,
 } from '~/constants/routing';
+import { DEFAULT_VALUES } from '~/constants/sotdl/form';
 import { fetchCharacter } from '~/logic/api/client/fetchCharacter';
 import { decodeCharacterObj } from '~/logic/utils/decodeCharacterObj';
 import { ApiResponse } from '~/typings/api';

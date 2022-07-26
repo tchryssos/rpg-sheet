@@ -2,12 +2,14 @@ import { NumberInputProps, Validations } from '~/components/form/typings';
 
 import { Input } from './Input';
 
-export interface NumberInputComponentProps
-  extends Omit<NumberInputProps, 'type' | 'validations'> {
+export type NumberInputComponentProps<T> = Omit<
+  NumberInputProps<T>,
+  'type' | 'validations'
+> & {
   validations?: Validations<Record<string, unknown>>;
-}
+};
 
-export const NumberInput: React.FC<NumberInputComponentProps> = ({
+export function NumberInput<T extends Record<string, unknown>>({
   label,
   name,
   min,
@@ -20,20 +22,22 @@ export const NumberInput: React.FC<NumberInputComponentProps> = ({
   noOutline,
   step,
   alwaysEditable,
-}) => (
-  <Input
-    alwaysEditable={alwaysEditable}
-    className={className}
-    disabled={disabled}
-    hideLabel={hideLabel}
-    label={label}
-    max={max}
-    min={min}
-    name={name}
-    noOutline={noOutline}
-    readOnly={readOnly}
-    step={step}
-    type="number"
-    validations={{ min, max, ...validations }}
-  />
-);
+}: NumberInputComponentProps<T>) {
+  return (
+    <Input
+      alwaysEditable={alwaysEditable}
+      className={className}
+      disabled={disabled}
+      hideLabel={hideLabel}
+      label={label}
+      max={max}
+      min={min}
+      name={name}
+      noOutline={noOutline}
+      readOnly={readOnly}
+      step={step}
+      type="number"
+      validations={{ min, max, ...validations }}
+    />
+  );
+}

@@ -28,12 +28,12 @@ const CheckInput = styled(Input)`
   z-index: -1;
 `;
 
-type CheckboxBaseProps = Omit<
-  CheckboxInputProps,
+type CheckboxBaseProps<T> = Omit<
+  CheckboxInputProps<T>,
   'type' | 'onChange' | 'customOnChange'
 >;
 
-type CheckboxProps = CheckboxBaseProps &
+type CheckboxProps<T> = CheckboxBaseProps<T> &
   (
     | {
         inputLike?: false;
@@ -47,7 +47,7 @@ type CheckboxProps = CheckboxBaseProps &
       }
   );
 
-export const CheckboxInput: React.FC<CheckboxProps> = ({
+export function CheckboxInput<T extends Record<string, unknown>>({
   label,
   name,
   readOnly,
@@ -59,7 +59,7 @@ export const CheckboxInput: React.FC<CheckboxProps> = ({
   customOnChange,
   inputLike,
   isChecked,
-}) => {
+}: CheckboxProps<T>) {
   const { watch, setValue } = useFormContext();
   const checked = inputLike ? isChecked : watch(name);
 
@@ -71,7 +71,7 @@ export const CheckboxInput: React.FC<CheckboxProps> = ({
       if (customOnChange) {
         customOnChange();
       } else {
-        setValue(name, !checked);
+        setValue(name as string, !checked);
       }
     }
   };
@@ -90,7 +90,7 @@ export const CheckboxInput: React.FC<CheckboxProps> = ({
           validations={validations}
         />
       )}
-      <Label
+      <Label<T>
         label={hideLabel || !inputLike ? '' : label || startCase(name)}
         labelFor={name}
       >
@@ -106,4 +106,4 @@ export const CheckboxInput: React.FC<CheckboxProps> = ({
       </Label>
     </Wrapper>
   );
-};
+}

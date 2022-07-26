@@ -1,6 +1,6 @@
 import { GridBox } from '~/components/box/GridBox';
-import { FIELD_NAMES } from '~/constants/form';
 import { useBreakpointsLessThan } from '~/logic/hooks/useBreakpoints';
+import { SotdlCharacterData } from '~/typings/sotdl/characterData';
 
 import { FormSection } from '../../form/FormSection';
 import { TextAreaInput } from '../../form/TextAreaInput';
@@ -14,16 +14,16 @@ export const HistoryInputs: React.FC = () => {
   return (
     <FormSection columns={1} title="History">
       <GridBox columns={isLessThanSm ? 2 : 4}>
-        <TextInput name={FIELD_NAMES.ancestry} />
+        <TextInput<SotdlCharacterData> name="ancestry" />
         <NovicePathInput />
         <ExpertPathInput />
         <MasterPathInput />
       </GridBox>
       <GridBox alignItems="start" columns={isLessThanSm ? 1 : 2}>
-        <TextAreaInput name={FIELD_NAMES.ancestryBenefits} />
-        <TextAreaInput name={FIELD_NAMES.languages} />
-        <TextAreaInput name={FIELD_NAMES.professions} />
-        <TextAreaInput name={FIELD_NAMES.pathBenefits} />
+        <TextAreaInput<SotdlCharacterData> name="ancestry_benefits" />
+        <TextAreaInput<SotdlCharacterData> name="languages" />
+        <TextAreaInput<SotdlCharacterData> name="professions" />
+        <TextAreaInput<SotdlCharacterData> name="path_benefits" />
       </GridBox>
     </FormSection>
   );

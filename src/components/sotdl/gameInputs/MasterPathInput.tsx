@@ -1,6 +1,6 @@
 import { useFormContext } from 'react-hook-form';
 
-import { FIELD_NAMES } from '~/constants/form';
+import { FIELD_NAMES } from '~/constants/sotdl/form';
 
 import { TextInput } from '../../form/TextInput';
 

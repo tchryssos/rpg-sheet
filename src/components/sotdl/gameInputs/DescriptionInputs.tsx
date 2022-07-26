@@ -1,5 +1,5 @@
-import { FIELD_NAMES } from '~/constants/form';
 import { useBreakpointsLessThan } from '~/logic/hooks/useBreakpoints';
+import { SotdlCharacterData } from '~/typings/sotdl/characterData';
 
 import { FormSection } from '../../form/FormSection';
 import { TextAreaInput } from '../../form/TextAreaInput';
@@ -12,8 +12,8 @@ export const DescriptionInputs: React.FC = () => {
       isCollapsable
       title="Description"
     >
-      <TextAreaInput name={FIELD_NAMES.background} />
-      <TextAreaInput name={FIELD_NAMES.appearance} />
+      <TextAreaInput<SotdlCharacterData> name="background" />
+      <TextAreaInput<SotdlCharacterData> name="appearance" />
     </FormSection>
   );
 };

@@ -9,11 +9,11 @@ import { DeleteButton } from '~/components/buttons/DeleteButton';
 import { AddAnotherMultiField } from '~/components/form/AddAnotherMultiField';
 import { SelectInput } from '~/components/form/SelectInput';
 import { TextInput } from '~/components/form/TextInput';
-import { FIELD_NAMES } from '~/constants/form';
 import { EditContext } from '~/logic/contexts/editContext';
 import { useBreakpointsLessThan } from '~/logic/hooks/useBreakpoints';
 import { pxToRem } from '~/logic/utils/styles/pxToRem';
 import { SortableAddAnotherChildProps } from '~/typings/form';
+import { SotdlCharacterData, SotdlSpell } from '~/typings/sotdl/characterData';
 
 import { FormSection } from '../../form/FormSection';
 import { NumberInput } from '../../form/NumberInput';
@@ -41,10 +41,8 @@ const spellTypeOptions = [
 
 const createMakeSpellName =
   (index: number) =>
-  (
-    spellKey: keyof typeof FIELD_NAMES['spells']
-  ): `spells.${number}.${string}` =>
-    `${FIELD_NAMES.spells.fieldName}.${index}.${FIELD_NAMES.spells[spellKey]}`;
+  (spellKey: keyof SotdlSpell): `spells.${number}.${keyof SotdlSpell}` =>
+    `spells.${index}.${spellKey}`;
 
 const SpellField: React.FC<SortableAddAnotherChildProps> = ({
   sortIndexMap,
@@ -64,14 +62,20 @@ const SpellField: React.FC<SortableAddAnotherChildProps> = ({
 
   const makeSpellName = createMakeSpellName(index);
 
-  const name = watch(makeSpellName('name')) || `Spell ${index + 1}`;
+  const name = watch(makeSpellName('spell_name')) || `Spell ${index + 1}`;
 
-  const remainingCastings = watch(makeSpellName('remainingCastings')) || 0;
-  const totalCastings = watch(makeSpellName('totalCastings')) || 0;
-  const tradition = watch(makeSpellName('tradition')) || '';
-  const level = watch(makeSpellName('rank')) || 0;
-  const type = watch(makeSpellName('type')) || 'Utility';
-  const maxCasts = watch(makeSpellName('totalCastings')) || 100;
+  const remainingCastings: SotdlSpell['spell_remaining_castings'] =
+    watch(makeSpellName('spell_remaining_castings')) || 0;
+  const totalCastings: SotdlSpell['spell_total_castings'] =
+    watch(makeSpellName('spell_total_castings')) || 0;
+  const tradition: SotdlSpell['spell_tradition'] =
+    watch(makeSpellName('spell_tradition')) || '';
+  const level: SotdlSpell['spell_rank'] =
+    watch(makeSpellName('spell_rank')) || 0;
+  const type: SotdlSpell['spell_type'] =
+    watch(makeSpellName('spell_type')) || 'Utility';
+  const maxCasts: SotdlSpell['spell_total_castings'] =
+    watch(makeSpellName('spell_total_castings')) || 100;
 
   /**
    * Switches between the following formats for spell names based on screen size:
@@ -97,41 +101,44 @@ const SpellField: React.FC<SortableAddAnotherChildProps> = ({
     >
       <GridBox columns={1} rowGap={16}>
         <GridBox gridTemplateColumns={isLessThanSm ? '1fr 1fr' : '2fr 1fr'}>
-          <TextInput label="Name" name={makeSpellName('name')} />
+          <TextInput label="Name" name={makeSpellName('spell_name')} />
           <FlexBox alignItems="flex-end" gap={8}>
             <NumberInput
               alwaysEditable
               label={`${isLessThanXs ? '' : 'Cur. '}Casts`}
               max={maxCasts}
               min={0}
-              name={makeSpellName('remainingCastings')}
+              name={makeSpellName('spell_remaining_castings')}
             />
             <SpellSlash>/</SpellSlash>
             <NumberInput
               hideLabel={isLessThanXs}
               label="Max Casts"
               min={0}
-              name={makeSpellName('totalCastings')}
+              name={makeSpellName('spell_total_castings')}
             />
           </FlexBox>
         </GridBox>
         <GridBox columns={3}>
-          <TextInput label="Tradition" name={makeSpellName('tradition')} />
+          <TextInput
+            label="Tradition"
+            name={makeSpellName('spell_tradition')}
+          />
           <SelectInput
             label="Type"
-            name={makeSpellName('type')}
+            name={makeSpellName('spell_type')}
             options={spellTypeOptions}
           />
           <NumberInput
             label="Rank"
             max={10}
             min={0}
-            name={makeSpellName('rank')}
+            name={makeSpellName('spell_rank')}
           />
         </GridBox>
         <TextAreaInput
           label="Description"
-          name={makeSpellName('description')}
+          name={makeSpellName('spell_description')}
         />
       </GridBox>
       {isEditMode && (
@@ -141,14 +148,14 @@ const SpellField: React.FC<SortableAddAnotherChildProps> = ({
   );
 };
 
-const createDefaultSpell = () => ({
-  [FIELD_NAMES.spells.name]: '',
-  [FIELD_NAMES.spells.rank]: 0,
-  [FIELD_NAMES.spells.tradition]: '',
-  [FIELD_NAMES.spells.type]: 'utility',
-  [FIELD_NAMES.spells.description]: '',
-  [FIELD_NAMES.spells.totalCastings]: 1,
-  [FIELD_NAMES.spells.remainingCastings]: 1,
+const createDefaultSpell = (): SotdlSpell => ({
+  spell_name: '',
+  spell_rank: 0,
+  spell_tradition: '',
+  spell_type: 'utility',
+  spell_description: '',
+  spell_total_castings: 1,
+  spell_remaining_castings: 1,
 });
 
 export const MagicInputs: React.FC = () => {
@@ -157,17 +164,17 @@ export const MagicInputs: React.FC = () => {
   return (
     <FormSection columns={1} isCollapsable title="Spells">
       <GridBox gridTemplateColumns={`repeat(${isLessThanMd ? 3 : 4}, 1fr)`}>
-        <NumberInput label="Power" min={0} name={FIELD_NAMES.spellPower} />
+        <NumberInput<SotdlCharacterData>
+          label="Power"
+          min={0}
+          name="spell_power"
+        />
       </GridBox>
-      <AddAnotherMultiField
+      <AddAnotherMultiField<SotdlCharacterData>
         HeaderRow={undefined}
         createDefaultValue={createDefaultSpell}
-        parentFieldName={FIELD_NAMES.spells.fieldName}
-        sortProperties={[
-          FIELD_NAMES.spells.tradition,
-          FIELD_NAMES.spells.rank,
-          FIELD_NAMES.spells.name,
-        ]}
+        parentFieldName="spells"
+        sortProperties={['spell_tradition', 'spell_rank', 'spell_name']}
       >
         {({ index, onDelete, sortIndexMap, fieldId }) => (
           <SpellField

@@ -28,7 +28,7 @@ export const TextArea = styled.textarea<{ height?: number }>(
   })
 );
 
-export const TextAreaInput: React.FC<Omit<TextInputProps, 'type'>> = ({
+export function TextAreaInput<T extends Record<string, unknown>>({
   label,
   name,
   readOnly,
@@ -37,7 +37,7 @@ export const TextAreaInput: React.FC<Omit<TextInputProps, 'type'>> = ({
   validations,
   hideLabel,
   alwaysEditable,
-}) => {
+}: Omit<TextInputProps<T>, 'type'>) {
   const [height, setHeight] = useState<number>(defaultHeight);
 
   const { register } = useFormContext();
@@ -77,4 +77,4 @@ export const TextAreaInput: React.FC<Omit<TextInputProps, 'type'>> = ({
       />
     </Label>
   );
-};
+}

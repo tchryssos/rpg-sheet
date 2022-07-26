@@ -7,7 +7,7 @@ import { GridBox } from '~/components/box/GridBox';
 import { DeleteButton } from '~/components/buttons/DeleteButton';
 import { CheckboxInput } from '~/components/form/CheckboxInput';
 import { SubBody } from '~/components/typography/SubBody';
-import { FIELD_NAMES } from '~/constants/form';
+import { FIELD_NAMES } from '~/constants/sotdl/form';
 import { EditContext } from '~/logic/contexts/editContext';
 import { useBreakpointsLessThan } from '~/logic/hooks/useBreakpoints';
 

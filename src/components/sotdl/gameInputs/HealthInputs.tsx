@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import { FIELD_NAMES } from '~/constants/form';
 import { useBreakpointsLessThan } from '~/logic/hooks/useBreakpoints';
+import { SotdlCharacterData } from '~/typings/sotdl/characterData';
 
 import { NumberInput } from '../../form/NumberInput';
 
@@ -10,29 +10,32 @@ export const HealthInputs = () => {
   const { watch, setValue } = useFormContext();
 
   const isLessThanMd = useBreakpointsLessThan('md');
-  let health: number = watch(FIELD_NAMES.health);
+  let health: number = watch<keyof SotdlCharacterData>('health');
   health = parseInt(`${health || 1}`, 10);
 
   useEffect(() => {
-    setValue(FIELD_NAMES.healing_rate, Math.max(Math.floor(health / 4), 1));
+    setValue<keyof SotdlCharacterData>(
+      'healing_rate',
+      Math.max(Math.floor(health / 4), 1)
+    );
   }, [health, setValue]);
 
   return (
     <>
-      <NumberInput min={0} name={FIELD_NAMES.health} />
-      <NumberInput
+      <NumberInput<SotdlCharacterData> min={0} name="health" />
+      <NumberInput<SotdlCharacterData>
         label={isLessThanMd ? 'H. Rate' : 'Heal Rate'}
         min={1}
-        name={FIELD_NAMES.healing_rate}
+        name="healing_rate"
         noOutline
       />
-      <NumberInput
+      <NumberInput<SotdlCharacterData>
         alwaysEditable
         max={health}
         min={0}
-        name={FIELD_NAMES.damage}
+        name="damage"
       />
-      <NumberInput min={0} name={FIELD_NAMES.defense} />
+      <NumberInput<SotdlCharacterData> min={0} name="defense" />
     </>
   );
 };

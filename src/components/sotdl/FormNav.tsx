@@ -4,7 +4,7 @@ import { useContext, useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useFormContext } from 'react-hook-form';
 
-import { FIELD_NAMES } from '~/constants/form';
+import { FIELD_NAMES } from '~/constants/sotdl/form';
 import {
   createCharacterSheetRoute,
   NEW_CHARACTER_ID,

@@ -3,10 +3,13 @@ import { useContext } from 'react';
 import { GridBox } from '~/components/box/GridBox';
 import { DeleteButton } from '~/components/buttons/DeleteButton';
 import { Body } from '~/components/typography/Body';
-import { FIELD_NAMES } from '~/constants/form';
 import { EditContext } from '~/logic/contexts/editContext';
 import { useBreakpointsAtLeast } from '~/logic/hooks/useBreakpoints';
 import { SortableAddAnotherChildProps } from '~/typings/form';
+import {
+  SotdlCharacterData,
+  SotdlEquipment,
+} from '~/typings/sotdl/characterData';
 
 import { AddAnotherMultiField } from '../../form/AddAnotherMultiField';
 import { FormSection } from '../../form/FormSection';
@@ -15,7 +18,6 @@ import { TextInput } from '../../form/TextInput';
 
 const itemTemplateColumns = '4fr 1fr 6fr';
 const itemSmallTemplateColumns = '2fr 2fr';
-const { fieldName, name, notes, value } = FIELD_NAMES.equipment;
 
 const ItemField: React.FC<SortableAddAnotherChildProps> = ({
   postSortIndex,
@@ -36,12 +38,12 @@ const ItemField: React.FC<SortableAddAnotherChildProps> = ({
         isAtLeastSm ? itemTemplateColumns : itemSmallTemplateColumns
       }
     >
-      <TextInput hideLabel name={`${fieldName}.${index}.${name}`} />
-      {isAtLeastSm && (
-        <TextInput hideLabel name={`${fieldName}.${index}.${value}`} />
-      )}
+      <TextInput<SotdlCharacterData>
+        hideLabel
+        name={`equipment.${index!}.equipment_name`}
+      />
       <GridBox gridTemplateColumns={isEditMode ? '1fr auto' : '1fr'}>
-        <TextAreaInput hideLabel name={`${fieldName}.${index}.${notes}`} />
+        <TextAreaInput hideLabel name={`equipment.${index!}.equipment_notes`} />
         {isEditMode && (
           <DeleteButton disabled={index === undefined} onDelete={onDelete} />
         )}
@@ -65,19 +67,18 @@ const ItemHeader: React.FC = () => {
   );
 };
 
-const createDefaultValue = () => ({
-  [FIELD_NAMES.equipment.name]: '',
-  [FIELD_NAMES.equipment.notes]: '',
-  [FIELD_NAMES.equipment.value]: '',
+const createDefaultValue = (): SotdlEquipment => ({
+  equipment_name: '',
+  equipment_notes: '',
 });
 
 export const EquipmentInputs: React.FC = () => (
   <FormSection columns={1} isCollapsable title="Equipment">
-    <AddAnotherMultiField
+    <AddAnotherMultiField<SotdlCharacterData>
       HeaderRow={ItemHeader}
       createDefaultValue={createDefaultValue}
-      parentFieldName={FIELD_NAMES.equipment.fieldName}
-      sortProperties={[FIELD_NAMES.equipment.name]}
+      parentFieldName="equipment"
+      sortProperties={['equipment_name']}
     >
       {({ index, onDelete, sortIndexMap, fieldId }) => (
         <ItemField

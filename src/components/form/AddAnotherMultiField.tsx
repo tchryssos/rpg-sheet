@@ -3,18 +3,15 @@ import sortBy from 'lodash.sortby';
 import { useContext, useEffect, useState } from 'react';
 import { useFieldArray, useFormContext } from 'react-hook-form';
 
-import { SotdlFields } from '~/constants/form';
 import { EditContext } from '~/logic/contexts/editContext';
-import { MultiFields } from '~/typings/form';
+import { KeyOfListField, ListFieldRecord } from '~/typings/util';
 
 import { Box } from '../box/Box';
 import { SubBody } from '../typography/SubBody';
 import { AddAnotherButton } from './AddAnotherButton';
 
-type AddAnotherMultiField = MultiFields<SotdlFields>;
-
-interface AddAnotherMultiFieldProps {
-  parentFieldName: AddAnotherMultiField[keyof AddAnotherMultiField]['fieldName'];
+type AddAnotherMultiFieldProps<T extends Record<string, unknown>> = {
+  parentFieldName: Extract<keyof ListFieldRecord<T>, string>;
   children: (fieldProps: {
     index: number;
     onDelete: (index: number) => void;
@@ -25,24 +22,24 @@ interface AddAnotherMultiFieldProps {
   HeaderRow?: React.FC;
   // @TODO Type this so that it knows which properties are available via
   // parentFieldName
-  sortProperties?: string[];
-}
+  sortProperties?: KeyOfListField<T>[];
+};
 
 const ChildContainer = styled(Box)`
   max-width: 100%;
 `;
 
-export const AddAnotherMultiField: React.FC<AddAnotherMultiFieldProps> = ({
+export function AddAnotherMultiField<T extends Record<string, unknown>>({
   parentFieldName,
   children,
   createDefaultValue,
   HeaderRow,
   sortProperties,
-}) => {
+}: AddAnotherMultiFieldProps<T>) {
   const { control, watch } = useFormContext();
   const { fields, append, remove } = useFieldArray({
     control,
-    name: parentFieldName,
+    name: parentFieldName as string,
   });
   const parentField: Record<string, unknown>[] | undefined =
     watch(parentFieldName);
@@ -106,4 +103,4 @@ export const AddAnotherMultiField: React.FC<AddAnotherMultiFieldProps> = ({
       )}
     </>
   );
-};
+}

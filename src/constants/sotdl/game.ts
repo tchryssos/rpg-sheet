@@ -1,4 +1,4 @@
-import { Attribute } from '~/typings/game';
+import { Attribute } from '~/typings/sotdl/game';
 
 export const ATTRIBUTES: Attribute[] = [
   'strength',

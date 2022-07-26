@@ -7,3 +7,7 @@ export type CharacterSaveData = Pick<
 > & {
   id: number | 'new';
 };
+
+export type StrictCharacter = Omit<character> & {
+  characterData: Record<string, string>;
+};

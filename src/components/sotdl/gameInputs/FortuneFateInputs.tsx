@@ -1,5 +1,5 @@
-import { FIELD_NAMES } from '~/constants/form';
 import { useBreakpointsLessThan } from '~/logic/hooks/useBreakpoints';
+import { SotdlCharacterData } from '~/typings/sotdl/characterData';
 
 import { CheckboxInput } from '../../form/CheckboxInput';
 import { NumberInput } from '../../form/NumberInput';
@@ -9,13 +9,13 @@ export const FortuneFateInputs: React.FC = () => {
 
   return (
     <>
-      <NumberInput
+      <NumberInput<SotdlCharacterData>
         label={isLessThanMd ? 'Fate' : 'Fate Rolls'}
         max={3}
         min={0}
-        name={FIELD_NAMES.fateRolls}
+        name="fate_rolls"
       />
-      <CheckboxInput name={FIELD_NAMES.fortune} />
+      <CheckboxInput<SotdlCharacterData> name="fortune" />
     </>
   );
 };
