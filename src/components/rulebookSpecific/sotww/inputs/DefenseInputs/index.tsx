@@ -32,11 +32,10 @@ export function DefenseInputs() {
         <NumberInput<SotwwCharacterData>
           alwaysEditable
           label="Health"
-          max={parseInt(String(maxHealth), 10)}
           name="health_current"
         />
         {!isEditMode && (
-          <Text color={theme.colors.textAccent} variant="body-xs">
+          <Text color={theme.colors.textAccent} variant="body-sm">
             {`(Max Health: ${maxHealth})`}
           </Text>
         )}
